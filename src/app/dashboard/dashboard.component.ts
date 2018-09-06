@@ -24,7 +24,7 @@ var x = {};
 
 
 export class DashboardComponent implements OnInit {
-
+  public data : any
  
 
  
@@ -42,7 +42,9 @@ export class DashboardComponent implements OnInit {
     .subscribe(data => {
      console.log("object", data['Detail']);
      DashboardComponent.dataObj = data['Detail'];
-    
+    console.log(DashboardComponent.dataObj);
+    this.data = DashboardComponent.dataObj;
+    console.log(this.data);
      });
           //console.log(x);
     var radio_button1 = document.getElementById("radio1");

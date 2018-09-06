@@ -142,30 +142,37 @@
     <div class="container">
       <div class="row">
         <div class="col">
-          <table class="table table-hover" [mfData]="data" #mf="mfDataTable"  id="myTable">
+          <table class="table table-hover" [mfData]="data" #mf="mfDataTable"  id="myTable" [mfRowsOnPage]="10">
               <thead>
                 <tr>
-                  <th> <mfDefaultSorter by="Depart">Depart</mfDefaultSorter></th>
-                  <th> <mfDefaultSorter by="Duration">Duration</mfDefaultSorter></th>
-                  <th> <mfDefaultSorter by="Arrival">Arrival</mfDefaultSorter></th>
-                  <th> <mfDefaultSorter by="Travels">Travels</mfDefaultSorter></th>
-                  <th> <mfDefaultSorter by="Seats">Seats</mfDefaultSorter></th>
-                  <th> <mfDefaultSorter by="Price">Price</mfDefaultSorter></th>
+                  <th> <mfDefaultSorter by="departureTime">Depart</mfDefaultSorter></th>
+                  <th> <mfDefaultSorter by="duration">Duration</mfDefaultSorter></th>
+                  <th> <mfDefaultSorter by="ArrivalTime">Arrival</mfDefaultSorter></th>
+                  <th> <mfDefaultSorter by="TravelsName">Travels</mfDefaultSorter></th>
+                  <th> <mfDefaultSorter by="SeatsAvailable">Seats</mfDefaultSorter></th>
+                  <th> <mfDefaultSorter by="fare">Price</mfDefaultSorter></th>
                 </tr>
               </thead>
               <tbody>
                   
                       <tr *ngFor="let user of mf.data">
-                          <td>{{user.Depart}}</td>
-                          <td>{{user.Duration}}</td>
-                          <td>{{user.Arrival}}</td>
-                          <td>{{user.Travels}}</td>
-                          <td>{{user.Seats}}</td>
-                          <td><tr>{{user.Price}}</tr><tr>{{user.Price1}}</tr><tr>{{user.Price2}}</tr></td>
+                          <td>{{user.departureTime}}</td>
+                          <td>{{user.duration}}</td>
+                          <td>{{user.ArrivalTime}}</td>
+                          <td>{{user.TravelsName}}</td>
+                          <td>{{user.SeatsAvailable}}</td>
+                          <td><tr>{{user.fare}}</tr></td>
                       </tr>
                   
                 
               </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="3">
+                    <mfBootstrapPaginator></mfBootstrapPaginator>
+                  </td>
+                </tr>
+              </tfoot>
             </table>
           </div>
       </div> 
