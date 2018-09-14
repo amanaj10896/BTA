@@ -48,6 +48,13 @@ export class LoginComponent implements OnInit {
     radio_button2.addEventListener("click",function(){
        arrival.disabled=false; 
     });   
+  if(localStorage.getItem("source")&&localStorage.getItem("destination")){
+    var s=<HTMLInputElement>document.getElementById("source");
+    var d=<HTMLInputElement>document.getElementById("destination");
+    s.value = localStorage.getItem("source");
+    d.value = localStorage.getItem("destination");
+
+  }
 
  }
     validation()
@@ -55,13 +62,36 @@ export class LoginComponent implements OnInit {
      var s=<HTMLInputElement>document.getElementById("source");
      var d=<HTMLInputElement>document.getElementById("destination");
      var t=<HTMLInputElement>document.getElementById("departure");
+
+     var auto_source = s.value.split(",");
+     s.value = auto_source[0];
+
+     var auto_destination = d.value.split(",");
+     d.value = auto_destination[0];
    
      DataService.JSONObj.source = s.value;
      DataService.JSONObj.destination = d.value;
      DataService.JSONObj.date = t.value;
+      localStorage.setItem("source",s.value);
+      localStorage.setItem("destination",d.value);
      
-       
- 
+      var today = new Date();
+      var dd = today.getDate();
+      var mm = today.getMonth()+1; //January is 0!
+      var yyyy = today.getFullYear();
+
+      if(dd<10) {
+          dd = '0'+dd;
+      } 
+      
+      if(mm<10) {
+          mm = '0'+mm;
+      } 
+      
+      today = yyyy + '-' + mm + '-' + dd;
+      console.log(typeof(today));
+      console.log(typeof(DataService.JSONObj.date));
+    
 
     if((DataService.JSONObj.source == "") || (DataService.JSONObj.destination =="") || (DataService.JSONObj.date =="")){
       
@@ -78,7 +108,7 @@ export class LoginComponent implements OnInit {
        h.innerText="* Destination cannot be same as source";
        this.router.navigateByUrl('login');
      }
-   
+     
     else{
        
       this.router.navigateByUrl('login/dashboard');

@@ -15,6 +15,8 @@ static JSONObj = {"source":" ", "destination": " ", "date": " " };
 
 dataObj = {};
   
+static dataSort = { };
+
 private url: string;
 
 

@@ -17,15 +17,12 @@ import { Router} from '@angular/router';
 export class AppComponent implements OnInit {
   
   title = 'bta';
-// static dataObj = {};
+
 
   constructor( private socialAuthService: AuthService,private router:Router, private dataService : DataService) {}
   
   ngOnInit() {
-    // this.router.navigateByUrl('login');
-    // AppComponent.dataObj = this.dataService.getData();
-    // console.log(AppComponent.dataObj);
-    // //console.log(this.dataService.getData());
+
   }
 
   public socialSignIn(socialPlatform : string) {
@@ -37,8 +34,6 @@ export class AppComponent implements OnInit {
     
     this.socialAuthService.signIn(socialPlatformProvider).then(
       (userData) => {
-        //console.log(socialPlatform+" sign in data : " , userData);
-        // Now sign-in with userData
         var btn=<HTMLBodyElement>document.getElementById("btn");
         btn.innerText=userData.name;
         var logout=<HTMLAnchorElement>document.getElementById("Log-out");

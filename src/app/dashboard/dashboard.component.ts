@@ -45,24 +45,17 @@ date=DataService.JSONObj.date;
     .subscribe(data => {
      console.log("object", data['Detail']);
      DashboardComponent.dataObj = data['Detail'];
-    console.log(DashboardComponent.dataObj);
-    this.data = DashboardComponent.dataObj;
-    console.log(this.data);
+     this.data =  DashboardComponent.dataObj;
+     
+    if(DataService.dataSort[1] != null)
+    {
+      this.data =  DataService.dataSort;
+    }
+    if(DashboardComponent.dataObj == 0){
+     this.router.navigateByUrl('login');
+    }
      });
-          //console.log(x);
-    var radio_button1 = document.getElementById("radio1");
-    var radio_button2 = document.getElementById("radio2");
-    var arrival = <HTMLInputElement>document.getElementById("destDate");
-
-    radio_button1.addEventListener("click", function () {
-      arrival.disabled = true;
-      arrival.value="dd/mm/yyyy";
-    });
-    radio_button2.addEventListener("click", function () {
-     arrival.disabled = false;
-
-   });
-
+         
   }
 
   
